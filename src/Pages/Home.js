@@ -11,6 +11,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { useState} from "react";
+import { useSelector, useDispatch} from 'react-redux';
+import { likePost, dislikePost } from '../actions';
 
 const Container = styled.div`
     border: 1px solid seagreen;
@@ -72,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Home() {
+    const posts = useSelector(state => state.posts)
+    const dispatch = useDispatch()
     const classes = useStyles();
     const [auth, setAuth] = useState(true);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -142,8 +146,7 @@ function Home() {
                 </Toolbar>
             </AppBar>
         <Container>
-        <PostCard /> 
-          {/* <PostCard /> */}
+          {posts.map((item)=> <PostCard data={item}/>)}
         </Container>
         </>
     )
