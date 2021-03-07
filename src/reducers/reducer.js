@@ -40,7 +40,7 @@ const initialState = {
     }
 ],
 likedPosts: [1],
-dislikedPosts: [2]
+dislikedPosts: [2, 1]
 }
 
 const reducer = (state = initialState, action)=> {

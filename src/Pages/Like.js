@@ -11,18 +11,25 @@ const Container = styled.div`
 `
 
 
-function Home() {
-    const posts = useSelector(state => state.posts)
+function Like() {
+    const posts = useSelector(state => state)
     const dispatch = useDispatch()
     
 
 
     return (
-            
+         <>
         <Container>
-          {posts.map((item)=> <PostCard key={item.id} data={item}/>)}
+         {posts.posts.map((item)=>{
+             if(posts.likedPosts.includes(item.id)){
+                 return(
+                     <PostCard data={item} key={item.id}/>
+                 )
+             }
+         })}
         </Container>
+        </>
     )
 }
 
-export default Home
+export default Like;
