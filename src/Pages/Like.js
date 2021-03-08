@@ -1,24 +1,22 @@
 import styled from 'styled-components';
 import PostCard from '../Components/PostCard';
-import { useSelector, useDispatch} from 'react-redux';
-import { likePost, dislikePost } from '../actions';
+import { useSelector} from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 
 const Container = styled.div`
-    padding: 50px;
+    padding: 40px;
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 `
 
 
 function Like() {
     const posts = useSelector(state => state)
-    const dispatch = useDispatch()
     
-
-
     return (
          <>
+         <Typography variant='h6' align='center' color='textPrimary' style={{borderBottom: '3px solid blue', width:' 200px', margin: '0 auto'}}>Liked Posts</Typography>
         <Container>
          {posts.posts.map((item)=>{
              if(posts.likedPosts.includes(item.id)){

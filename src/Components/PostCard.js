@@ -13,6 +13,7 @@ import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useDispatch } from 'react-redux';
 import { likePost, dislikePost } from '../actions';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,7 +33,7 @@ function PostCard({data}) {
     const dispatch = useDispatch()
 
     return (
-        <Card className={classes.root}>
+      <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="movie" className={classes.avatar}> 
@@ -45,7 +46,7 @@ function PostCard({data}) {
         }
         title={`${data.title}`}
       />
-      <CardContent>
+      <CardContent style={{height: '100px', overflow: 'hidden'}}>
         <Typography variant="body2" color="textSecondary" component="p">
           {data.synopsis}
         </Typography>
@@ -57,14 +58,19 @@ function PostCard({data}) {
         <IconButton aria-label="add to not-favorites" onClick={()=>dispatch(dislikePost(data.id))}>
           <ThumbDownIcon />
         </IconButton>
+        <Link to={`/edit/${data.id}`}>
         <Button size="small" color="primary">
-          Update
+          Edit
         </Button>
+        </Link>
+        <Link to={`/description/${data.id}`}>
         <Button size="small" color="primary">
           Read More
         </Button>
+        </Link>
       </CardActions>
     </Card>
+    
     )
 }
 

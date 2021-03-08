@@ -1,5 +1,7 @@
 export const LIKE_POST = 'LIKE_POST';
 export const DISLIKE_POST = 'DISLIKE_POST';
+export const CREATE_POST = 'CREATE_POST';
+export const EDIT_POST = 'EDIT_POST';
 
 export const likePost = (id)=> {
     return {
@@ -15,3 +17,16 @@ export const dislikePost = (id)=> {
     }
 }
 
+export const createPost = (newPost)=>{
+    return {
+        type: CREATE_POST,
+        payload: { newPost }
+    }
+}
+
+export const editPost = (post) => {
+    return {
+        type: EDIT_POST,
+        payload: { post}
+    }
+}

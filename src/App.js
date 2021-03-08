@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from './Components/Navbar/Navbar';
 import Like from './Pages/Like';
 import Dislike from './Pages/Dislike'
-
-
+import Readmore from './Pages/Readmore';
+import CreatePost from './Pages/CreatePost'
+import Edit from './Pages/Edit'
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/likes" exact component={Like} />
           <Route path="/dislikes" exact component={Dislike} />
-          {/* <Route path="/movies/description/:id" component={Description} exact/> */}
-          {/* <Route path="/tvshows/description/:id" component={Description} exact/> */}
+          <Route path="/description/:id" component={Readmore} exact/>
+          <Route path="/edit/:id" component={Edit} exact/>
+          <Route path="/create" component={CreatePost} exact/>
           {/* <Route component={PageNotFound} /> */}
         </Switch>
      

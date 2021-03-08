@@ -82,9 +82,9 @@ const useStyles = makeStyles((theme) => ({
     
   return (
       <>
-        <AppBar position="static" style={{marginBottom: '40px', backgroundColor: 'gray'}}>
+        <AppBar position="static" style={{marginBottom: '40px', backgroundColor: '#0F171E'}}>
                 <Toolbar>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Typography className={classes.title} variant="subtitle1" noWrap>
                     <Link
                         to="/"
                         exact={true}
@@ -98,19 +98,19 @@ const useStyles = makeStyles((theme) => ({
                         exact={true}
                         activeClassName="is-active"
                         >
-                            Like
+                          Liked Posts
                     </Link>
                     <Link
                         to="/dislikes"
                         exact={true}
                         activeClassName="is-active">
-                            DisLike
+                            Disliked Posts
                     </Link>
                     <Link 
                     to='/create'
                     exact={true}
                     activeClassName="is-active">
-                        Create
+                        Create Post
                     </Link>
                     </Wrapper>
                     <div className={classes.search}>
