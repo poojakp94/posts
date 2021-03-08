@@ -2,6 +2,7 @@ export const LIKE_POST = 'LIKE_POST';
 export const DISLIKE_POST = 'DISLIKE_POST';
 export const CREATE_POST = 'CREATE_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const SEARCH_POST = 'SEARCH_POST';
 
 export const likePost = (id)=> {
     return {
@@ -28,5 +29,13 @@ export const editPost = (post) => {
     return {
         type: EDIT_POST,
         payload: { post}
+    }
+}
+
+export const searchPost = (text)=> {
+    console.log(text)
+    return{
+        type: SEARCH_POST,
+        payload : {text}
     }
 }

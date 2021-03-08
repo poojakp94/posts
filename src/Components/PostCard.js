@@ -11,7 +11,7 @@ import { red } from '@material-ui/core/colors';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { likePost, dislikePost } from '../actions';
 import {Link} from 'react-router-dom';
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 function PostCard({data}) {
     const classes = useStyles();
     const dispatch = useDispatch()
-
+    const posts = useSelector(state => state)
     return (
       <Card className={classes.root}>
       <CardHeader
@@ -53,10 +53,10 @@ function PostCard({data}) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={()=>dispatch(likePost(data.id))}>
-          <ThumbUpIcon />
+          <ThumbUpIcon color={posts.likedPosts.includes(data.id)? "Primary": "textSecondary"} />
         </IconButton>
         <IconButton aria-label="add to not-favorites" onClick={()=>dispatch(dislikePost(data.id))}>
-          <ThumbDownIcon />
+          <ThumbDownIcon color={posts.dislikedPosts.includes(data.id) ? "Primary" : "TextPrimary"}/>
         </IconButton>
         <Link to={`/edit/${data.id}`}>
         <Button size="small" color="primary">

@@ -1,4 +1,4 @@
-import {LIKE_POST, DISLIKE_POST, CREATE_POST, EDIT_POST} from '../actions';
+import {LIKE_POST, DISLIKE_POST, CREATE_POST, EDIT_POST, SEARCH_POST} from '../actions';
 
 const initialState = {
     posts: [
@@ -74,7 +74,8 @@ const initialState = {
     }
 ],
 likedPosts: [1, 2, 3, 4],
-dislikedPosts: [5, 6, 7, 8]
+dislikedPosts: [5, 6, 7, 8],
+searchText: '',
 }
 
 const reducer = (state = initialState, action)=> {
@@ -98,6 +99,10 @@ const reducer = (state = initialState, action)=> {
           const { post } = payload;
           const filterEditPost = state.posts.filter(item => !(item.id === post.id));
           return{...state, posts:[...filterEditPost, post]}
+        }
+        case SEARCH_POST: {
+          const {text} = payload;
+          return{...state, searchText: text}
         }
         default:
             return state;       

@@ -6,9 +6,10 @@ import InputBase from '@material-ui/core/InputBase';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from "react-router-dom";
-import { useState} from "react";
 import styled from 'styled-components';
 import './navbar.css';
+import { useDispatch} from 'react-redux';
+import {searchPost} from '../../actions'
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -79,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   `
   function Navbar () {
     const classes = useStyles();
-    
+    const dispatch = useDispatch();
   return (
       <>
         <AppBar position="static" style={{marginBottom: '40px', backgroundColor: '#0F171E'}}>
@@ -124,6 +125,7 @@ const useStyles = makeStyles((theme) => ({
                             input: classes.inputInput,
                         }}
                         inputProps={{ 'aria-label': 'search' }}
+                        onChange={(e)=>{dispatch(searchPost(e.target.value))}}
                         />
                     </div>
                     

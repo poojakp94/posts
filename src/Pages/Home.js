@@ -14,14 +14,15 @@ const Container = styled.div`
 
 
 function Home() {
-    const posts = useSelector(state => state.posts)
+    const posts = useSelector(state => state)
+    const searchRegex = new RegExp(posts.searchText, 'i');
 
     return (
         <>  
             <Typography variant='h6' align='center' color='textPrimary' style={{borderBottom: '3px solid blue', width:' 200px', margin: '0 auto'}}>
                  All Posts</Typography>          
             <Container>
-            {posts.map((item)=> <PostCard key={item.id} data={item}/>)}
+            {posts.posts.filter(item=>item.title.match(searchRegex) ||item.synopsis.match(searchRegex) ).map((item)=> <PostCard key={item.id} data={item}/>)}
             </Container>
         </>
     )
